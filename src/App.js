@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { HashRouter, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import watermarkImage from "./assets/HYLOGO_NAVY.png";
@@ -15,7 +15,7 @@ export default function App() {
   }, []);
 
   return (
-    <HashRouter>
+    <BrowserRouter basename="/hanyoung">
       <div style={{ minHeight: "100vh", color: "#0f172a" }}>
         <header style={{ maxWidth: 1120, margin: "0 auto", padding: "24px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link to="/" style={{ fontSize: 20, fontWeight: 800, textDecoration: "none", color: "inherit" }}>관세법인 한영 업무 대시보드</Link>
@@ -34,7 +34,7 @@ export default function App() {
           </Routes>
         </main>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
