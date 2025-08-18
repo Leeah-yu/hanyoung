@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hanyoung/static/css/main.e6c13ad2.css",
+    "main.js": "/hanyoung/static/js/main.c89d2c3a.js",
+    "static/js/977.8477c0e6.chunk.js": "/hanyoung/static/js/977.8477c0e6.chunk.js",
+    "static/js/455.090204f6.chunk.js": "/hanyoung/static/js/455.090204f6.chunk.js",
+    "static/js/453.0e41901d.chunk.js": "/hanyoung/static/js/453.0e41901d.chunk.js",
+    "static/media/HYLOGO_NAVY.png": "/hanyoung/static/media/HYLOGO_NAVY.f21826478be0cb7a43b4.png",
+    "index.html": "/hanyoung/index.html",
+    "main.e6c13ad2.css.map": "/hanyoung/static/css/main.e6c13ad2.css.map",
+    "main.c89d2c3a.js.map": "/hanyoung/static/js/main.c89d2c3a.js.map",
+    "977.8477c0e6.chunk.js.map": "/hanyoung/static/js/977.8477c0e6.chunk.js.map",
+    "455.090204f6.chunk.js.map": "/hanyoung/static/js/455.090204f6.chunk.js.map",
+    "453.0e41901d.chunk.js.map": "/hanyoung/static/js/453.0e41901d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c89d2c3a.js"
+  ]
+}
