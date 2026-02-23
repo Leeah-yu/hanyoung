@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import watermarkImage from "./assets/HYLOGO_NAVY.png";
 import Home from "./Home"; // ← 새로 만든 홈 컴포넌트
 
 export default function App() {
@@ -231,8 +230,13 @@ function PreviewWhy() {
     const pdf = new jsPDF({ orientation: "p", unit: "pt", format: "a4" });
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-    pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight, undefined, "FAST");
-    pdf.save(`사유서_${company || "무제"}.pdf`);
+pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight, undefined, "FAST");
+    
+    // 인보이스 번호가 있으면 인보이스 번호를, 없으면 BL 번호를 사용 (둘 다 없으면 빈칸)
+    const refNo = invoiceNo || blNo || ""; 
+    const fileName = `사유서_${company || "무제"}${refNo ? "_" + refNo : ""}.pdf`;
+    
+    pdf.save(fileName);
   }
 
   const cleanReasons = reasons.map(r => (r || "").trim()).filter(Boolean);
@@ -262,19 +266,7 @@ function PreviewWhy() {
           lineHeight: 1.8,
         }}
       >
-        {/* 워터마크 */}
-        <img
-          src={watermarkImage}
-          alt="watermark"
-          style={{
-            position: "absolute",
-            top: "50%", left: "50%",
-            transform: "translate(-50%, -50%)",
-            opacity: 0.1,
-            maxWidth: "60%", height: "auto",
-            pointerEvents: "none", zIndex: 0, filter: "grayscale(20%)",
-          }}
-        />
+
 
         <div style={{ position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 16, marginBottom: 56 }}>
@@ -286,7 +278,7 @@ function PreviewWhy() {
             <tbody>
               <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
                 <td style={{ width: 160, background: "#f8fafc", padding: 12, fontWeight: 700 }}>
-                  <strong>업체명</strong>
+                  업체명
                 </td>
                 <td style={{ padding: 12 }}>{company || <span style={{ color: "#94a3b8" }}>(미입력)</span>}</td>
               </tr>
@@ -337,10 +329,7 @@ function PreviewWhy() {
           </div>
         </footer>
 
-        {/* 하단 안내문 */}
-        <div style={{ position: "absolute", left: "50%", bottom: 24, transform: "translateX(-50%)", fontSize: 12, color: "#94a3b8", letterSpacing: "-0.2px" }}>
-          본 사유서는 관세법인 한영에서 제공하는 양식입니다.
-        </div>
+
 
         <div aria-hidden style={{ position: "absolute", inset: 16, border: "1px solid #f1f5f9", pointerEvents: "none" }} />
       </div>
